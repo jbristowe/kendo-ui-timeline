@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-bootstrap.min.css" />
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.min.css" />
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.mobile.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<script src="js/modernizr.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
+	<title>Kendo UI Timeline</title>
+</head>
+<body>
+	<header style="z-index: 1;">
+		<h1>Kendo UI Timeline</h1>
+	</header>
+	<div id="timeline" style="padding-top: 150px;"></div>
+	<script src="js/main.js"></script>
+	<script id="timeline-template" type="text/x-kendo-template">
+		# for (var i = 0; i < data.length; i++) { #
+			# if (i == 0 || data[i].date.getYear() > data[i - 1].date.getYear()) { #
+			<h1 id="timeline-header-#= data[i].date.getFullYear() #" style="font-size: 40px; text-align: center;">#= data[i].date.getFullYear() #</h1>
+			<section id="cd-timeline" class="cd-container">
+			# } #
+			# if (!data[i].type || data[i].type == undefined) { continue; } #
+			<div id="timeline-block-#= i #" class="cd-timeline-block">
+				# if (data[i].type == "Beta") { #
+				<div class="cd-timeline-img cd-location bounce-in"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></div>
+				# } else if (data[i].type == "Service Pack") { #
+				<div class="cd-timeline-img cd-service-pack bounce-in" style=""><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></div>
+				# } else if (data[i].type == "Webinar") { #
+				<div class="cd-timeline-img cd-webinar bounce-in"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></div>
+				# } else { #
+				<div class="cd-timeline-img cd-picture bounce-in"><i class="fa fa-star fa-2x" aria-hidden="true"></i></div>
+				# } #
+				<div class="cd-timeline-content bounce-in">
+					<div class="list-group">
+						# if (data[i].notesUrl && data[i].notesUrl != undefined) { #
+						<a href="http://www.telerik.com/support/whats-new/kendo-ui/release-history/#= data[i].notesUrl #">
+						# } #
+						<h2>#= data[i].title #</h2>
+						# if (data[i].notesUrl && data[i].notesUrl != undefined || data[i].youTubeId && data[i].youTubeId != undefined) { #
+						</a>
+						# } #
+						# if (data[i].version && data[i].version != undefined) { #
+						#= data[i].version #
+						# } #
+						# if (data[i].description && data[i].description != undefined) { #
+						<p>#= data[i].description #</p>
+						# } #
+						# if (data[i].youTubeId && data[i].youTubeId != undefined) { #
+						<p><iframe id="timeline-video-#= i #" width="100%" height="315" src="https://www.youtube.com/embed/#= data[i].youTubeId #" frameborder="0" allowfullscreen></iframe></p>
+						# } #
+					</div>
+					# if (data[i].imageUrl && data[i].imageUrl != undefined) { #
+					<p><img class="timeline-image" src="#= data[i].imageUrl #" /></p>
+					# } #
+					<span class="cd-date">#= data[i].date.toDateString() #</span>
+				</div>
+			</div>
+			# if (i == data.length - 1 || data[i].date.getYear() < data[i + 1].date.getYear()) { #
+		</section>
+	  	# } #
+  	# } #
+	</script>
+	<script>
+		function parseDate(input) {
+  		var parts = input.split('/');
+			return new Date(parts[2], parts[1]-1, parts[0]);
+		}
+
+		$(document).ready(function() {
+			var dataSource = new kendo.data.DataSource({
+				transport: {
+					read: {
+						url: "https://spreadsheets.google.com/feeds/list/1Z54-N6h0Dl-JSfr2o95f58g2omYz7DLw9CX-j7Th_VQ/od6/public/values?alt=json"
+					}
+				},
+				schema: {
+					parse: function(response) {
+						var items = [];
+						for (var i = 0; i < response.feed.entry.length; i++) {
+							var item = {
+								date: parseDate(response.feed.entry[i].gsx$date.$t),
+								title: response.feed.entry[i].gsx$title.$t,
+								description: response.feed.entry[i].gsx$description.$t,
+								type: response.feed.entry[i].gsx$type.$t,
+								version: response.feed.entry[i].gsx$version.$t,
+								imageUrl: response.feed.entry[i].gsx$imageurl.$t,
+								notesUrl: response.feed.entry[i].gsx$notesurl.$t,
+								youTubeId: response.feed.entry[i].gsx$youtubeid.$t
+							};
+							items.push(item);
+						}
+						return items;
+					}
+				}
+			});
+
+			dataSource.fetch().then(function() {
+				dataSource.sort({ field: "date", dir: "asc" });
+				var data = dataSource.view();
+				var template = kendo.template($("#timeline-template").html());
+				var result = template(data);
+				$("#timeline").append(result);
+				kendo.init($("#timeline"));
+			});
+		});
+	</script>
+</body>
+</html>
