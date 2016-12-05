@@ -3,13 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-bootstrap.min.css" />
 	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.min.css" />
 	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.mobile.min.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<script src="js/modernizr.js"></script>
 	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
 	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
@@ -17,9 +15,9 @@
 </head>
 <body>
 	<header style="z-index: 1;">
-		<h1>Kendo UI Timeline</h1>
+		<h1>History of Kendo UI</h1>
 	</header>
-	<div id="timeline" style="padding-top: 150px;"></div>
+	<div id="timeline" style="padding-top: 200px;"></div>
 	<script src="js/main.js"></script>
 	<script id="timeline-template" type="text/x-kendo-template">
 		# for (var i = 0; i < data.length; i++) { #
@@ -29,15 +27,7 @@
 			# } #
 			# if (!data[i].type || data[i].type == undefined) { continue; } #
 			<div id="timeline-block-#= i #" class="cd-timeline-block">
-				# if (data[i].type == "Beta") { #
-				<div class="cd-timeline-img cd-location bounce-in"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></div>
-				# } else if (data[i].type == "Service Pack") { #
-				<div class="cd-timeline-img cd-service-pack bounce-in" style=""><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></div>
-				# } else if (data[i].type == "Webinar") { #
-				<div class="cd-timeline-img cd-webinar bounce-in"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></div>
-				# } else { #
-				<div class="cd-timeline-img cd-picture bounce-in"><i class="fa fa-star fa-2x" aria-hidden="true"></i></div>
-				# } #
+				<div class="cd-timeline-img cd-picture bounce-in"><i class="k-font-icon k-i-calendar" aria-hidden="true"></i></div>
 				<div class="cd-timeline-content bounce-in">
 					<div class="list-group">
 						# if (data[i].notesUrl && data[i].notesUrl != undefined) { #

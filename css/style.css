@@ -1,8 +1,3 @@
-/* -------------------------------- 
-
-Primary style
-
--------------------------------- */
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,15 +11,12 @@ html * {
 
 body {
   font-size: 100%;
-  font-family: "Droid Serif", serif;
-  color: #7f8c97;
-  background-color: #e9f0f5;
+  background-color: white;
 }
 
 a {
   color: #acb7c0;
   text-decoration: none;
-  font-family: "Open Sans", sans-serif;
 }
 
 img {
@@ -49,37 +41,25 @@ h1, h2 {
   font-family: "FaktSlabPro";
 }
 
-/* -------------------------------- 
-
-Modules - reusable parts of our design
-
--------------------------------- */
 .cd-container {
-  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
   width: 90%;
   max-width: 1170px;
   margin: 0 auto;
 }
 .cd-container::after {
-  /* clearfix */
   content: '';
   display: table;
   clear: both;
 }
 
-/* -------------------------------- 
-
-Main components 
-
--------------------------------- */
 header {
   width:100%;
   position:fixed;
   top:0px;
-  height: 100px;
-  line-height: 100px;
+  height: 150px;
+  line-height: 150px;
   text-align: center;
-  background: #303e49;
+  background-image: url('../img/background.jpg');
 }
 header h1 {
   color: white;
@@ -88,8 +68,8 @@ header h1 {
 }
 @media only screen and (min-width: 1170px) {
   header {
-    height: 100px;
-    line-height: 100px;
+    height: 150px;
+    line-height: 150px;
   }
   header h1 {
     font-size: 24px;
@@ -104,7 +84,6 @@ header h1 {
   margin-bottom: 2em;
 }
 #cd-timeline::before {
-  /* this is the vertical line */
   content: '';
   position: absolute;
   top: 0;
@@ -162,7 +141,7 @@ header h1 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 4px #f0f0f0, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
   color: white;
 }
 .cd-timeline-img i {
@@ -172,14 +151,14 @@ header h1 {
   position: relative;
   left: 50%;
   top: 50%;
-  margin-left: -14px;
-  margin-top: -16px;
+  margin-left: -8px;
+  margin-top: -8px;
 }
 .cd-timeline-img.cd-picture {
   background: lightgreen;
 }
 .cd-timeline-img.cd-webinar {
-  background: red;
+  background: lightblue;
 }
 .cd-timeline-img.cd-location {
   background: lightblue;
@@ -189,11 +168,11 @@ header h1 {
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     left: 50%;
-    margin-left: -30px;
-    /* Force Hardware Acceleration in WebKit */
+    margin-top: 12px;
+    margin-left: -20px;
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
   }
@@ -269,10 +248,10 @@ header h1 {
   font-family: MetricWeb-Light;
   position: relative;
   margin-left: 60px;
-  background: white;
+  background-color: #f0f0f0;
   border-radius: 0.25em;
   padding: 1em;
-  box-shadow: 0 3px 0 #d7e4ed;
+  box-shadow: 0 3px 0 #d0d0d0;
 }
 .cd-timeline-content:after {
   content: "";
@@ -310,7 +289,7 @@ header h1 {
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid white;
+  border-right: 7px solid #f0f0f0;
 }
 @media only screen and (min-width: 768px) {
   .cd-timeline-content h2 {
@@ -319,7 +298,7 @@ header h1 {
   }
   .cd-timeline-content p {
     font-size: 16px;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 14px;
@@ -336,7 +315,7 @@ header h1 {
     top: 24px;
     left: 100%;
     border-color: transparent;
-    border-left-color: white;
+    border-left-color: #f0f0f0;
   }
   .cd-timeline-content .cd-date {
     position: absolute;
@@ -344,7 +323,7 @@ header h1 {
     left: 122%;
     top: 6px;
     font-size: 16px;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;
@@ -354,7 +333,7 @@ header h1 {
     left: auto;
     right: 100%;
     border-color: transparent;
-    border-right-color: white;
+    border-right-color: #f0f0f0;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
     float: right;
