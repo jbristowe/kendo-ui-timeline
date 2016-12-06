@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
 @font-face {
   font-family: 'Lato', serif;
   font-style: normal;
@@ -50,6 +53,10 @@ h1, h2 {
   content: '';
   display: table;
   clear: both;
+}
+
+.cd-timeline-content-version {
+  font-size: 0.8rem;
 }
 
 header {
@@ -155,7 +162,7 @@ header h1 {
   margin-top: -8px;
 }
 .cd-timeline-img.cd-picture {
-  background: lightgreen;
+  background: mediumseagreen;
 }
 .cd-timeline-img.cd-webinar {
   background: lightblue;
@@ -298,7 +305,7 @@ header h1 {
   }
   .cd-timeline-content p {
     font-size: 16px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 14px;

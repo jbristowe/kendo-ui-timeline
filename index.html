@@ -5,20 +5,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
-	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-bootstrap.min.css" />
-	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.min.css" />
-	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.mobile.min.css" />
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.mobile.min.css" type="text/css" />
+	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.bootstrap.mobile.min.css" type="text/css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" type="text/css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300" type="text/css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
 	<script src="https://kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
-	<title>Kendo UI Timeline</title>
+	<title>History of Kendo UI</title>
 </head>
 <body>
 	<header style="z-index: 1;">
 		<h1>History of Kendo UI</h1>
 	</header>
 	<div id="timeline" style="padding-top: 200px;"></div>
-	<script src="js/main.js"></script>
 	<script id="timeline-template" type="text/x-kendo-template">
 		# for (var i = 0; i < data.length; i++) { #
 			# if (i == 0 || data[i].date.getYear() > data[i - 1].date.getYear()) { #
@@ -38,10 +40,10 @@
 						</a>
 						# } #
 						# if (data[i].version && data[i].version != undefined) { #
-						#= data[i].version #
+						<span class="cd-timeline-content-version">#= data[i].version #</span>
 						# } #
 						# if (data[i].description && data[i].description != undefined) { #
-						<p>#= data[i].description #</p>
+						<p class="cd-timeline-content-description">#= data[i].description #</p>
 						# } #
 						# if (data[i].youTubeId && data[i].youTubeId != undefined) { #
 						<p><iframe id="timeline-video-#= i #" width="100%" height="315" src="https://www.youtube.com/embed/#= data[i].youTubeId #" frameborder="0" allowfullscreen></iframe></p>
