@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Lato', serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.googleapis.com/css?family=Lato:400);
+}
+
+@font-face {
+  font-family: 'Roboto Slab', serif;
+  font-style: bold;
+  font-weight: 700;
+  src: url(https://fonts.googleapis.com/css?family=Roboto+Slab:700);
+}
+
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,22 +37,8 @@ img {
   max-width: 100%;
 }
 
-@font-face {
-  font-family: "MetricWeb-Light";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/MetricWeb-Light.woff2") format("woff");
-}
-
-@font-face {
-  font-family: "FaktSlabPro";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/FaktSlabPro-Blond.woff2") format("woff");
-}
-
 h1, h2 {
-  font-family: "FaktSlabPro";
+  font-family: 'Roboto Slab', serif;
 }
 
 .cd-container {
@@ -245,7 +245,7 @@ header h1 {
   }
 }
 .cd-timeline-content {
-  font-family: MetricWeb-Light;
+  font-family: 'Lato', serif;
   position: relative;
   margin-left: 60px;
   background-color: #f0f0f0;
