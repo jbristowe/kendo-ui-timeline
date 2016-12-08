@@ -23,8 +23,12 @@ img {
   max-width: 100%;
 }
 
-h1, h2 {
+h1, h2, .cd-timeline-content, #beta-releases-button {
   font-family: 'Titillium Web', serif;
+}
+
+#beta-releases-button {
+  color: black;
 }
 
 .cd-container {
@@ -235,7 +239,6 @@ header h1 {
   }
 }
 .cd-timeline-content {
-  font-family: 'Titillium Web', serif;
   position: relative;
   margin-left: 60px;
   background-color: #f0f0f0;
