@@ -25,18 +25,19 @@
       var dataSource = new kendo.data.DataSource({
         schema: {
           parse: function(response) {
-            var items = [];
-            for (var i = 0; i < response.feed.entry.length; i++) {
+            var items = [],
+                entry = response.feed.entry;
+            for (var i = 0; i < entry.length; i++) {
               var item = {
-                date: kendo.parseDate(response.feed.entry[i].gsx$date.$t, "dd/MM/yyyy"),
-                title: response.feed.entry[i].gsx$title.$t,
-                description: response.feed.entry[i].gsx$description.$t,
-                type: response.feed.entry[i].gsx$type.$t,
-                version: response.feed.entry[i].gsx$version.$t,
-                imageUrl: response.feed.entry[i].gsx$imageurl.$t,
-                notesUrl: response.feed.entry[i].gsx$notesurl.$t,
-                youTubeId: response.feed.entry[i].gsx$youtubeid.$t,
-                tweetUrl:  response.feed.entry[i].gsx$tweeturl.$t
+                date: kendo.parseDate(entry[i].gsx$date.$t, "dd/MM/yyyy"),
+                title: entry[i].gsx$title.$t,
+                description: entry[i].gsx$description.$t,
+                type: entry[i].gsx$type.$t,
+                version: entry[i].gsx$version.$t,
+                imageUrl: entry[i].gsx$imageurl.$t,
+                notesUrl: entry[i].gsx$notesurl.$t,
+                youTubeId: entry[i].gsx$youtubeid.$t,
+                tweetUrl:  entry[i].gsx$tweeturl.$t
               };
 
               items.push(item);
