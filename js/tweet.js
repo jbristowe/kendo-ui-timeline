@@ -7,17 +7,21 @@
     init: function(element, options) {
       var that = this;
       Widget.fn.init.call(this, element, options);
-      element = that.wrapper = that.element;
-      options = that.options;
       that._render();
     },
 
     options: {
       name: "Tweet",
-      url: "",
+      align: "",
       hideMedia: false,
       hideThread: false,
-      align: ""
+      hideTweet: false,
+      lang: "",
+      maxWidth: "",
+      omitScript: false,
+      related: "",
+      url: "",
+      widgetType: ""
     },
 
     _render: function() {
@@ -29,6 +33,10 @@
       if (options.url) {
         oEmbedUrl += "?url=" + options.url;
 
+        if (options.align) {
+          oEmbedUrl += "&align=" + options.align;
+        }
+
         if (options.hideMedia) {
           oEmbedUrl += "&hide_media=1";
         }
@@ -37,8 +45,23 @@
           oEmbedUrl += "&hide_thread=1";
         }
 
-        if (options.align) {
-          oEmbedUrl += "&align=" + options.align;
+        if (options.lang) {
+          oEmbedUrl += "&lang=" + options.lang;
+        }
+
+        if (options.omitScript) {
+          oEmbedUrl += "&omit_script=1";
+        }
+
+        if (options.related) {
+          oEmbedUrl += "&related=" + options.related;
+        }
+
+        if (options.widgetType == "video") {
+          oEmbedUrl += "&widget_type=video"
+          if (options.hideTweet) {
+            oEmbedUrl += "&hide_tweet=1"
+          }
         }
 
         $.ajax({
