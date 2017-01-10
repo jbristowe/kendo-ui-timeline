@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web" type="text/css" />
+  <script src="https://platform.twitter.com/widgets.js"></script>
   <title>A Brief History of Kendo UI</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
                 entry = response.feed.entry;
             for (var i = 0; i < entry.length; i++) {
               var item = {
-                date: kendo.parseDate(entry[i].gsx$date.$t, "dd/MM/yyyy"),
+                date: kendo.parseDate(entry[i].gsx$date.$t),
                 title: entry[i].gsx$title.$t,
                 description: entry[i].gsx$description.$t,
                 type: entry[i].gsx$type.$t,
@@ -36,7 +37,8 @@
                 imageUrl: entry[i].gsx$imageurl.$t,
                 notesUrl: entry[i].gsx$notesurl.$t,
                 youTubeId: entry[i].gsx$youtubeid.$t,
-                tweetUrl:  entry[i].gsx$tweeturl.$t
+                tweetUrl: entry[i].gsx$tweeturl.$t,
+                tweetId: entry[i].gsx$tweetid.$t
               };
 
               items.push(item);

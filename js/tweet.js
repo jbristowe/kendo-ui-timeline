@@ -21,6 +21,7 @@
       omitScript: false,
       related: "",
       url: "",
+      id: "",
       widgetType: ""
     },
 
