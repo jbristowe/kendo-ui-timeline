@@ -1,0 +1,22 @@
+<div style="padding-top: 200px;">
+  <template ngFor let-timelineEntryCollection [ngForOf]="timelineEntryCollections">
+    <h1 id="timeline-header" style="font-size: 40px; text-align: center;">{{timelineEntryCollection.year}}</h1>
+    <section id="cd-timeline" class="cd-container">
+      <template ngFor let-timelineEntry [ngForOf]="timelineEntryCollection.entries">
+        <div id="timeline-block" class="cd-timeline-block">
+          <div class="cd-timeline-img cd-picture bounce-in"><i class="k-font-icon k-i-calendar" aria-hidden="true"></i></div>
+          <div class="cd-timeline-content bounce-in">
+            <div class="list-group">
+              <h2>{{timelineEntry.title}}</h2>
+              <span *ngIf="timelineEntry.version" class="cd-timeline-content-version">{{timelineEntry.version}}</span>
+              <p *ngIf="timelineEntry.description" class="cd-timeline-content-description">{{timelineEntry.description}}</p>
+              <img *ngIf="timelineEntry.imageUrl" [src]="timelineEntry.imageUrl" />
+              <timeline-tweet *ngIf="timelineEntry.tweetId" [tweetId]="timelineEntry.tweetId"></timeline-tweet>
+              <youtube-player *ngIf="timelineEntry.youTubeId" [videoId]="timelineEntry.youTubeId" width="100%"></youtube-player>
+            </div>
+          </div>
+        </div>
+      </template>
+    </section>
+  </template>
+</div>
