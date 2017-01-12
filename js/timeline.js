@@ -43,7 +43,7 @@
               <p class="cd-timeline-content-description">#= data[i].description #</p>
               # } #
               # if (data[i].tweetUrl) { #
-              <div id="timeline-tweet-#= i #" data-role="tweet" data-url="#= data[i].tweetUrl #"></div>
+              <div id="timeline-tweet-#= i #" data-role="tweet" data-url="#= data[i].tweetUrl #" data-id="#= data[i].tweetId #"></div>
               # } #
               # if (data[i].youTubeId) { #
               <p><iframe id="timeline-video-#= i #" width="100%" height="315" src="https://www.youtube.com/embed/#= data[i].youTubeId #" frameborder="0" allowfullscreen></iframe></p>
